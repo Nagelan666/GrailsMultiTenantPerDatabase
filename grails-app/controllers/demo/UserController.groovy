@@ -1,7 +1,5 @@
 package demo
 
-import grails.gorm.multitenancy.Tenant
-import grails.gorm.multitenancy.Tenants
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.validation.ValidationException
 import org.springframework.security.access.annotation.Secured
