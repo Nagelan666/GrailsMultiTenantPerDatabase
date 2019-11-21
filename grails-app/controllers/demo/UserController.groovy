@@ -12,6 +12,7 @@ import static org.springframework.http.HttpStatus.*
 class UserController {
 
     UserService userService
+    SpringSecurityService springSecurityService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -35,6 +36,8 @@ class UserController {
         }
 
         try {
+            def user1 = User.findByUsername(springSecurityService.principal.username)
+            user.tenantId = user1.tenantId
             userService.save(user)
         } catch (ValidationException e) {
             respond user.errors, view:'create'
